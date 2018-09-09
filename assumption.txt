@@ -1,0 +1,4 @@
+Different columns with same name - countries. ignored for now but still on the db.
+Data # column - unsure of meaning
+empty column - not sure what the use is
+
