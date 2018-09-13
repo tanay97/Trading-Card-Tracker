@@ -1,6 +1,6 @@
 const { Pool, Client } = require('pg');    
 
-const connectionString = 'postgres://vuitsnnr:qfNR6FucYV92dloKvm7QOrj7ifx5pk6c@stampy.db.elephantsql.com:5432/vuitsnnr';
+const connectionString = 'postgres://asivvmmy:llmOHkPi-sLOd6jW_KVsLf4_VxSFeyDa@elmer.db.elephantsql.com:5432/asivvmmy';
 var pool;
 
 module.exports = {
