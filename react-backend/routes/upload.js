@@ -36,7 +36,8 @@ function getNextData(smth, index) {
 }
 
 // todo: upload is not excel file, handling duplicate col names, proper error propagation
-// only handling one file upload right now
+// todo: not a single transaction together
+// todo: only handling one file upload right now (unimportant)
 router.post('/', upload.any(), function(req, res, next) {
     console.log('in upload router');
     var files = req.files;
