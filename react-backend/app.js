@@ -15,6 +15,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var uploadRouter = require('./routes/upload');
+var searchRouter = require('./routes/search_db');
 
 var app = express();
 
@@ -33,6 +34,7 @@ var dbUtil = require('./db/util.js');
 
 app.use('/', indexRouter);
 app.use('/upload', uploadRouter);
+app.use('/search_db', searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
