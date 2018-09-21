@@ -3,30 +3,37 @@ import './Table.css';
 
 // child components
 import TableRow from './TableRow';
+import { Table as T} from 'react-bootstrap';
 
 class Table extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // empty state for now
-    };
+    // props.pageNumber
+    // props.pageSize
   }
 
   render() {
-    // hardcoding this array for now, getting this passed down as a prop later...
-    // would then use it as this.props.data.map(data => ...)
-    var data = ["row1", "row2", "row3", "row4", "row5", "row6"];
-
-  	return (
-  		<div className="Table">
-        	<b>Table</b>
-          <div className="golfCards">
-            {data.map(x => (
-              <TableRow data={x}/>
-            ))}
-          </div>
-      </div>
-    );
+    if(this.props.data == undefined || this.props.data.length < 1) {
+      // should show screen that no results were found
+    } else {
+    	return (
+        <T striped bordered condensed hover className="T-class">
+          <thead>
+            <tr>
+              {Reflect.ownKeys(this.props.data[0]).map(property => (<th className="blue">{property}</th>))}
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.data.slice((this.props.pageNumber-1)*this.props.pageSize, 
+              (this.props.pageNumber)*this.props.pageSize).map(card => (
+              <tr>
+                {Object.values(card).map(value => (
+                  <td align="left" className="cardRow">{value}</td>))}
+              </tr>))}
+          </tbody>
+        </T>
+      );
+    }
   }
 }
 
