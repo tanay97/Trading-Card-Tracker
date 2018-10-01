@@ -1,3 +1,8 @@
 .SidebarOption {
-	border: 0.5px solid red;
+	border: 0.25px solid grey;
+	background: darkgrey;
+
+}
+.SidebarOption:hover{
+	border: solid white;
 }
