@@ -19,11 +19,11 @@ module.exports = {
 		});
 	},
 	// execute singular query
-	query: (text, params, callback) => {
+	query: (text, values, callback) => {
 		const start = Date.now();
-		return pool.query(text, params, (err, res) => {
+		return pool.query(text, values, (err, res) => {
 			const duration = Date.now() - start;
-			console.log('executed query', { text, duration, rows: res.rowCount });
+			console.log('executed query', { text, duration });
       		callback(err, res);
 		});
 	},
