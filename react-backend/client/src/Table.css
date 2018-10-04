@@ -1,6 +1,7 @@
 .T-class {
 	max-width: none;
 	width:100%;
+	background-color: white;
 }
 
 .blue {
@@ -9,4 +10,12 @@
 
 .cardRow {
 	height: 110px;
+}
+
+.TableBody {
+
+}
+
+.TableHead {
+
 }

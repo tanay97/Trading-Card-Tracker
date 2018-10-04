@@ -18,12 +18,12 @@ class Table extends Component {
     } else {
     	return (
         <T striped bordered condensed hover className="T-class">
-          <thead>
+          <thead className="TableHead">
             <tr>
               {Reflect.ownKeys(this.props.data[0]).map(property => (<th className="blue">{property}</th>))}
             </tr>
           </thead>
-          <tbody>
+          <tbody className="TableBody">
             {this.props.data.slice((this.props.pageNumber-1)*this.props.pageSize, 
               (this.props.pageNumber)*this.props.pageSize).map(card => (
               <tr>

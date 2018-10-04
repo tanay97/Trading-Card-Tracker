@@ -20,7 +20,7 @@ class SidebarOption extends Component {
   }
 
   render() {
-    if (this.state.clicked === true){
+    if (this.state.clicked === true && this.props.type == 1){
       return (
       <div>
         <div className="SidebarOption" onClick={this.handleClick}>
