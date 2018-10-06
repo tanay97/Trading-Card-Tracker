@@ -243,7 +243,14 @@ class App extends Component {
       ] // note data is static here in state temporarily...
     };
     this.handleChangePage=this.handleChangePage.bind(this);
+    this.handleNewData = this.handleNewData.bind(this);
   }
+
+  handleNewData(newData){
+    //alert("wait");
+    console.log(newData);
+    this.setState({data: newData});
+    }
 
   handleChangePage(e) {
     if (e.target.value === "next") {
@@ -297,10 +304,10 @@ class App extends Component {
             title
         </div>
         <div className="sidenav">
-          <SidebarOption text={"Input/Find"} type={1}/>
-          <SidebarOption text={"Sort"} type={2}/>
-          <SidebarOption text={"Upload"} type={3}/>
-          <SidebarOption text={"Save to Desktop"} type={4}/>
+          <SidebarOption text={"Input/Find"} type={1} onDataChange={this.handleNewData}/>
+          <SidebarOption text={"Sort"} type={2} onDataChange={this.handleNewData}/>
+          <SidebarOption text={"Upload"} type={3} onDataChange={this.handleNewData}/>
+          <SidebarOption text={"Save to Desktop"} type={4} onDataChange={this.handleNewData}/>
         </div>
         <div className="Table">
           <DisplayMessage pageNumber={this.state.pageNumber} 

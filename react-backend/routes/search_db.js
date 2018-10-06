@@ -7,6 +7,7 @@ dbUtil.connect();
 var output;
 
 router.get('/', function(req, res, next) {
+	console.log(req);
 	search_q = mk_query(req);
 	param_list = mk_list(req);
 	dbUtil.query(search_q, param_list, (err, result) => {
@@ -21,6 +22,7 @@ router.get('/', function(req, res, next) {
 });
 
 function out (res){
+	res.header('Access-Control-Allow-Origin', "*");
 	res.status(200).send(output);
 	console.log(output);
 }
@@ -30,7 +32,7 @@ function mk_query(req){
 	var count = 1; 
 	for (key in req.query){
 		
-		if (req.query[key] != "*"){
+		if (req.query[key] != ""){
 			q += key +'=$'+ count + ' and ';
 			count+=1;
 		}	
@@ -43,7 +45,7 @@ function mk_query(req){
 function mk_list (req){
 	var l = [];
 	for (key in req.query){
-		if (req.query[key] != "*"){
+		if (req.query[key] != ""){
 			l.push(req.query[key]);
 		}
 	}

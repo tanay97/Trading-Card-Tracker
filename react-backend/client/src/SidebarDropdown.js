@@ -8,20 +8,27 @@ class SidebarDropdown extends Component {
     this.state = {
       // empty state for now
     };
+    this.handleSubmit =this.handleSubmit.bind(this);
   }
   handleSubmit(e){
-    var data = {};
+    var Data = {};
+    var newData;
     var inputForm = document.getElementById("form");
     for (var i = 0; i < inputForm.length - 1; i++){
-      data[inputForm.elements[i].name] = inputForm.elements[i].value;
+      Data[inputForm.elements[i].name] = inputForm.elements[i].value;
     }
-    console.log(data);
-    request({
+    //console.log(Data);
+    var p1 = new Promise((resolve, reject) => {
+      request({
       url: 'http://localhost:3000/search_db',
       method: "GET",
-      form: data,
-    }, function(error, res, body){
-      console.log(error);
+      qs: Data,
+      }, (error, res, body) => {
+        newData = JSON.parse(body)["rows"];
+        resolve();
+      });
+    }).then(()=>{
+      this.props.onDataChange(newData);
     });
 
     e.preventDefault();

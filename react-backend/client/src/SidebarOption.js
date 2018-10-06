@@ -8,15 +8,21 @@ class SidebarOption extends Component {
     super(props);
     this.state = {
       // empty state for now
-      clicked: false
+      clicked: false,
     };
     this.handleClick =this.handleClick.bind(this);// bind the function
+    this.handleDataChange = this.handleDataChange.bind(this);
   }
   handleClick(e) {
     //console.log('urmomgay');
     this.setState(state => ({clicked: !state.clicked}));
     //console.log(this.state.clicked); 
     //this.render(); 
+  }
+
+  handleDataChange(newData){
+    this.props.onDataChange(newData);
+    //console.log(newData);
   }
 
   render() {
@@ -28,7 +34,7 @@ class SidebarOption extends Component {
                 {this.props.text}
             </p>
         </div>
-        <SidebarDropdown text={"Menu"}/>
+        <SidebarDropdown text={"Menu"} onDataChange={this.handleDataChange}/>
       </div>
       );
     }
