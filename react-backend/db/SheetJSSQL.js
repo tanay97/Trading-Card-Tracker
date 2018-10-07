@@ -97,6 +97,7 @@ module.exports = {
                 def: null
             }));
         }
+        console.log("columnSet: " + columnSet);
 
         // to create DROP and CREATE table statements
         var types = new Array(range.e.c - range.s.c + 1);
@@ -128,6 +129,7 @@ module.exports = {
             }
             types[C - range.s.c] = _type || TYPES.t;
         }
+        console.log("here");
         var BT = mode == "PGSQL" ? "" : "`";
         var Q = mode == "PGSQL" ? "'" : '"';
         var J = mode == "PGSQL" ? /'/g : /"/g;
@@ -135,6 +137,7 @@ module.exports = {
         out.push("CREATE TABLE " + BT + sname + BT + " (" + headers.map(function(n, i) {
             return BT + n + BT + " " + (types[i] || "TEXT");
         }).join(", ") + ", PRIMARY KEY (" + headers[0] + ")" + ");");
+        console.log("here2");
         return columnSet;
     }
 };

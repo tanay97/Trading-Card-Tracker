@@ -12,3 +12,11 @@
 .SidebarOption:hover{
 	background: lightblue;
 }
+
+#upload-btn {
+	display: none;
+}
+
+#upload-input {
+	display: none;
+}
