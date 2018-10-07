@@ -5,6 +5,20 @@ import './Table.css';
 import TableRow from './TableRow';
 import { Table as T} from 'react-bootstrap';
 
+var table_headings = {
+      "data" : "Number",
+      "course_name" : "Course",
+      "town_city_area" : "City",
+      "state" : "State",
+      "country": "Country",
+      "world_area" : "Continent",
+      "holes" : "Holes",
+      "type" : "Type",
+      "founded_date" : "Founded Date",
+      "architect_designer" : "Designer",
+      "value" : "Value"
+    };
+
 class Table extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +34,7 @@ class Table extends Component {
         <T striped bordered condensed hover className="T-class">
           <thead className="TableHead">
             <tr>
-              {Reflect.ownKeys(this.props.data[0]).map(property => (<th className="blue">{property}</th>))}
+              {Reflect.ownKeys(this.props.data[0]).map(property => (<th className="table_heading">{table_headings[property]}</th>))}
             </tr>
           </thead>
           <tbody className="TableBody">

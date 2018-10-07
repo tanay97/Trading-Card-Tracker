@@ -39,34 +39,34 @@ class SidebarDropdown extends Component {
   		<div className="SidebarDropdown">
         <form className="Dropdown-form" onSubmit={this.handleSubmit} id="form">
           <div className="label">
-            <label>
+            <div>
                 Course Name
               <input type="text" name="course_name" className="input"/>
-            </label><br/>
+            </div><br/>
           </div>
           <div className="label">
-            <label>
+            <div>
               Holes
               <input type="text" name="holes" className="input"/>
-            </label><br/>
+            </div><br/>
           </div>
           <div className="label">
-            <label>
+            <div>
               Town
               <input type="text" name="town_city_area" className="input"/>
-            </label><br/>
+            </div><br/>
           </div>
           <div className="label">
-            <label>
+            <div>
               State
               <input type="text" name="state" className="input"/>
-            </label><br/>
+            </div><br/>
           </div>
           <div className="label">
-            <label>
+            <div>
               Country
               <input type="text" name="country" className="input"/>
-            </label><br/>
+            </div><br/>
           </div>
           <div className="label">
             <label>
@@ -75,10 +75,10 @@ class SidebarDropdown extends Component {
             </label><br/>
           </div>
           <div className="label">
-            <label>
+            <div>
               Founded Date
               <input type="text" name="founded_date" className="input"/>
-            </label>
+            </div>
           </div>
           <div className="submit">
             <input type="submit" value="Find" className="submit-btn"/>

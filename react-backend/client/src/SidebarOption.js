@@ -29,7 +29,7 @@ class SidebarOption extends Component {
     if (this.state.clicked === true && this.props.type == 1){
       return (
       <div>
-        <div className="SidebarOption" onClick={this.handleClick}>
+        <div className="SidebarOption" onClick={this.handleClick} style={{background: 'lightblue'}}>
             <p className="SidebarOption-p">
                 {this.props.text}
             </p>
