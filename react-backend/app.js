@@ -15,6 +15,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var uploadRouter = require('./routes/upload');
+var downloadRouter = require('./routes/download');
 var searchRouter = require('./routes/search_db');
 
 
@@ -35,6 +36,7 @@ var dbUtil = require('./db/util.js');
 
 app.use('/', indexRouter);
 app.use('/upload', uploadRouter);
+app.use('/download', downloadRouter);
 app.use('/search_db', searchRouter);
 
 // catch 404 and forward to error handler
