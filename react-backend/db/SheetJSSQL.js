@@ -61,6 +61,8 @@ module.exports = {
     // uses sname as table name
     createColumnSet: function(ws, sname, mode) {
         console.log("creating ColumnSet");
+        out = [];
+        headers = [];  // clearing again because poor design mb
         var TYPES = _TYPES[mode || "SQLITE"];
         if (!ws || !ws['!ref']) return; // nullcheck
         var range = X.utils.decode_range(ws['!ref']);
