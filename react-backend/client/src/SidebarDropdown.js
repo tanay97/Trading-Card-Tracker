@@ -15,7 +15,7 @@ class SidebarDropdown extends Component {
     var newData;
     var inputForm = document.getElementById("form");
     for (var i = 0; i < inputForm.length - 1; i++){
-      Data[inputForm.elements[i].name] = inputForm.elements[i].value;
+      Data[inputForm.elements[i].name] = "%"+inputForm.elements[i].value+"%";
     }
     //console.log(Data);
     var p1 = new Promise((resolve, reject) => {
@@ -25,6 +25,22 @@ class SidebarDropdown extends Component {
       qs: Data,
       }, (error, res, body) => {
         newData = JSON.parse(body)["rows"];
+        // console.log(newData);
+        if (newData.length == 0){
+          
+          newData = [{
+          "data": "",
+          "course_name": "",
+          "town_city_area": "",
+          "state": "",
+          "country": "",
+          "world_area": "",
+          "holes": "",
+          "founded_date": "",
+          "type": "",
+          "architect_designer": "",
+          "value": ""}]
+        }
         resolve();
       });
     }).then(()=>{

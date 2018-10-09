@@ -33,7 +33,7 @@ function mk_query(req){
 	for (key in req.query){
 		
 		if (req.query[key] != ""){
-			q += key +'=$'+ count + ' and ';
+			q += key +' LIKE $' + count + ' and ';
 			count+=1;
 		}	
 	}
