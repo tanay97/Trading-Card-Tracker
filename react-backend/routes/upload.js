@@ -64,6 +64,7 @@ router.post('/', upload.any(), function(req, res, next) {
         const cs = new pgp.helpers.ColumnSet(columnSetObject);
         const tablename = new pgp.helpers.TableName(tname.toLowerCase());
         SheetJSSQL.getAndExecuteDropAndCreateTableQueries();
+        console.log("here7");
 
         db.tx('massive-insert', t => { // executes callback function as a transaction
             return t.sequence(index => { // t.sequence returns a promise
