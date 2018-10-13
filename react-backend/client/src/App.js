@@ -154,11 +154,11 @@ class App extends Component {
 
           <Table pageNumber={this.state.pageNumber} pageSize={this.state.pageSize}
           data={this.state.data}/>
-        </div>
-        <div className="bottomnav">
-          <ButtonGroup onChange={this.handleChangePage}>
-            {this.createButtons(Math.ceil(this.state.data.length/this.state.pageSize))}
-          </ButtonGroup>
+          <div className="bottomnav">
+            <ButtonGroup onChange={this.handleChangePage}>
+              {this.createButtons(Math.ceil(this.state.data.length/this.state.pageSize))}
+            </ButtonGroup>
+          </div>
         </div>
       </div>
     );
