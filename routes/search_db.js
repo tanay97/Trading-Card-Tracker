@@ -21,11 +21,29 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.get('/all', function(req, res, next) {
+	console.log(req)
+	search_q = 'Select * From data';
+	param_list = [];
+	dbUtil.query(search_q, param_list, (err, result) => {
+  		if (err) {
+    		console.log(err.stack);
+  		} else {
+    		output = result;
+    	}
+    	out(res);
+    });
+
+});
+
+
 function out (res){
 	res.header('Access-Control-Allow-Origin', "*");
 	res.status(200).send(output);
 	console.log(output);
 }
+
+
 
 function mk_query(req){
 	var q = 'Select * From data where ';
