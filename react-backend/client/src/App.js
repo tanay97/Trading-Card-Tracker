@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ButtonWrapper from './ButtonWrapper.js'
+import ButtonWrapper from './ButtonWrapper.js';
 
 // Child components
 import SidebarOption from './SidebarOption';
@@ -10,7 +10,10 @@ import DisplayMessage from './DisplayMessage';
 import { ButtonGroup } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
+var request = require("request");
+
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -18,180 +21,48 @@ class App extends Component {
       buttonPageIndex: 0,  // should never change
       pageSize: 9,   // todo: make button saying what pageSize is
       numberButtons: 2,  // todo: change based on screen size
-      data: [{
-        "data": 6,
-        "course_name": "Bracebridge G Cl",
-        "town_city_area": "Bracebridge",
-        "state": "ON",
-        "country": "CAN",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1949",
-        "type": "SP",
-        "architect_designer": null,
-        "value": null
-    }, {
-        "data": 28,
-        "course_name": "Annapolis CC",
-        "town_city_area": "Annapolis",
-        "state": "MD",
-        "country": "USA",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1925",
-        "type": "SP",
-        "architect_designer": "Banks,Charles",
-        "value": null
-    }, {
-        "data": 48,
-        "course_name": "Aquia Harbour G & CC",
-        "town_city_area": "Stafford",
-        "state": "VA",
-        "country": "USA",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1960",
-        "type": "PR",
-        "architect_designer": null,
-        "value": null
-    }, {
-        "data": 79,
-        "course_name": "Ardglass G Cl",
-        "town_city_area": "Ardglass",
-        "state": "DOW",
-        "country": "IRL/N",
-        "world_area": "EUR",
-        "holes": "9",
-        "founded_date": "1896",
-        "type": "SP",
-        "architect_designer": "Jones,David- Rev 1998",
-        "value": null
-    }, {
-        "data": 80,
-        "course_name": "Inveraray G Cl",
-        "town_city_area": "Inveraray",
-        "state": "ARL",
-        "country": "SCT",
-        "world_area": "EUR",
-        "holes": "9",
-        "founded_date": "1993",
-        "type": "SP",
-        "architect_designer": null,
-        "value": null
-    }, {
-        "data": 81,
-        "course_name": "Thames Ditton & Esher G Cl",
-        "town_city_area": "Scilly Isles,Esher",
-        "state": "SRY",
-        "country": "ENG",
-        "world_area": "EUR",
-        "holes": "9",
-        "founded_date": "1892",
-        "type": null,
-        "architect_designer": null,
-        "value": null
-    }, {
-        "data": 88,
-        "course_name": "Asheboro Municipal G Cl",
-        "town_city_area": "Asheboro",
-        "state": "NC",
-        "country": "USA",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1937",
-        "type": "P",
-        "architect_designer": "Ross,Donald",
-        "value": null
-    }, {
-        "data": 100,
-        "course_name": "Cashie G & CC",
-        "town_city_area": "Windso",
-        "state": "NC",
-        "country": "USA",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1953",
-        "type": "PR",
-        "architect_designer": null,
-        "value": null
-    }, {
-        "data": 130,
-        "course_name": "Fairways at Kirrie Glen [The]",
-        "town_city_area": "Bracebridge",
-        "state": "ON",
-        "country": "CAN",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "P",
-        "type": null,
-        "architect_designer": null,
-        "value": null
-    }, {
-        "data": 148,
-        "course_name": "Lake Lure M G Cr",
-        "town_city_area": "Lake Lure",
-        "state": "NC",
-        "country": "USA",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1936",
-        "type": "P",
-        "architect_designer": "Ross,Donald",
-        "value": null
-    }, {
-        "data": 178,
-        "course_name": "Markdale CC",
-        "town_city_area": "Markdale",
-        "state": "ON",
-        "country": "CAN",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1964",
-        "type": "SP",
-        "architect_designer": "Gray,Goldie",
-        "value": null
-    }, {
-        "data": 197,
-        "course_name": "Chanticlair G Cr",
-        "town_city_area": "Colchester",
-        "state": "CT",
-        "country": "USA",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1972",
-        "type": "P",
-        "architect_designer": "Stoloman,Hymie",
-        "value": null
-    }, {
-        "data": 206,
-        "course_name": "Tunxis Plantation CC",
-        "town_city_area": "Farmington",
-        "state": "CT",
-        "country": "USA",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1986",
-        "type": "P",
-        "architect_designer": "Zikorus,Al",
-        "value": null
-    }, {
-        "data": 236,
-        "course_name": "Old Lyme CC",
-        "town_city_area": "Old Lyme",
-        "state": "CT",
-        "country": "USA",
-        "world_area": "NA",
-        "holes": "9",
-        "founded_date": "1916",
-        "type": "PR",
-        "architect_designer": null,
-        "value": null
-    }
-      ] // note data is static here in state temporarily...
+      data: null
     };
     this.handleChangePage=this.handleChangePage.bind(this);
     this.handleNewData = this.handleNewData.bind(this);
+    this.handleInitialData = this.handleInitialData.bind(this);
+    this.handleInitialData();
   }
+
+  handleInitialData() {
+      console.log("handle intial data entry");
+      var newData;
+      var p1 = new Promise((resolve, reject) => {
+      request({
+      url: 'http://localhost:3000/search_db/all',
+      method: "GET",
+      }, (error, res, body) => {
+        newData = JSON.parse(body)["rows"];
+        // console.log(newData);
+        if (newData.length == 0){
+          
+          newData = [{
+          "data": "",
+          "course_name": "",
+          "town_city_area": "",
+          "state": "",
+          "country": "",
+          "world_area": "",
+          "holes": "",
+          "founded_date": "",
+          "type": "",
+          "architect_designer": "",
+          "value": ""}]
+        }
+        resolve();
+      });
+    }).then(()=>{
+        console.log("new data");
+        //console.log(newData);
+          this.setState({data: newData});    
+    });
+  }
+
 
   handleNewData(newData){
     //alert("wait");
@@ -245,6 +116,23 @@ class App extends Component {
 
   // in Math.ceil -> passing total number of buttons needed 
   render() {
+      if (this.state.data == null) {
+          return (
+              <div className="App">
+                <div className="title">
+                    Card Tracker
+                </div>
+                <div className="sidenav">
+                  <div className="golf">
+                    Golf
+                  </div>
+                  <SidebarOption text={"Find"} type={1} onDataChange={this.handleNewData}/>
+                  <SidebarOption text={"Upload"} type={3} onDataChange={this.handleNewData}/>
+                  <SidebarOption text={"Download"} type={4} onDataChange={this.handleNewData}/>
+                </div>
+              </div>
+            );
+      } else {
     return (
       <div className="App">
         <div className="title">
@@ -262,6 +150,7 @@ class App extends Component {
           <DisplayMessage pageNumber={this.state.pageNumber} 
           pageSize={this.state.pageSize}
           numberOfItems={this.state.data.length}/>
+              
 
           <Table pageNumber={this.state.pageNumber} pageSize={this.state.pageSize}
           data={this.state.data}/>
@@ -274,6 +163,7 @@ class App extends Component {
       </div>
     );
   }
+}
 }
 
 export default App;

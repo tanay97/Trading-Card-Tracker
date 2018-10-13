@@ -9,21 +9,22 @@ var dbUtil = require('../db/util.js');
 
 // download function
 router.get('/', function(req, res, next) {
-	console.log("here");
 	dbUtil.connect(); // create and connect to pool
 	dbUtil.getClient((err, client, done) => {
         if (err) {
             res.status(500).send("Error retrieving client");
         }
-        var stream = client.query(copyTo('COPY data TO STDOUT'));
+        //client.query(copyTo('COPY data TO STDOUT WITH csv'));
+        console.log("creating stream");
+        var stream = client.query(copyTo('COPY data TO STDOUT WITH CSV HEADER'));
         //stream.pipe(process.stdout); to stdout
         const writeStream = fs.createWriteStream(__dirname + '/data.csv');
-        console.log(__dirname + 'data.csv');
-        stream.pipe(writeStream); // this is not the actual file
+        //console.log(__dirname + 'data.csv');
+        stream.pipe(writeStream); // piping the stream of data to the writeStream, which is pointed at local file
 		stream.on('end', () => {
 			res.header('Access-Control-Allow-Origin', "*");
 			res.status(200).sendFile(__dirname + '/data.csv');
-			//res.status(200).send(writeStream);
+			
 		});
 		stream.on('error', () => {
 			res.status(500);
