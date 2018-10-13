@@ -21,6 +21,7 @@ router.get('/', function(req, res, next) {
         console.log(__dirname + 'data.csv');
         stream.pipe(writeStream); // this is not the actual file
 		stream.on('end', () => {
+			res.header('Access-Control-Allow-Origin', "*");
 			res.status(200).sendFile(__dirname + '/data.csv');
 			//res.status(200).send(writeStream);
 		});

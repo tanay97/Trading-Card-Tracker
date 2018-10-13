@@ -41,7 +41,7 @@ class SidebarOption extends Component {
 
   handleDownloadClick() {
     axios({
-      url: 'http://localhost:5000/download',
+      url: 'http://localhost:3000/download',
       method: 'GET',
       responseType: 'blob', // important
     }).then((response) => {

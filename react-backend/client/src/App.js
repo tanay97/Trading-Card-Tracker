@@ -256,7 +256,7 @@ class App extends Component {
           </div>
           <SidebarOption text={"Find"} type={1} onDataChange={this.handleNewData}/>
           <SidebarOption text={"Upload"} type={3} onDataChange={this.handleNewData}/>
-          <SidebarOption text={"Save to Desktop"} type={4} onDataChange={this.handleNewData}/>
+          <SidebarOption text={"Download"} type={4} onDataChange={this.handleNewData}/>
         </div>
         <div className="Table">
           <DisplayMessage pageNumber={this.state.pageNumber} 
