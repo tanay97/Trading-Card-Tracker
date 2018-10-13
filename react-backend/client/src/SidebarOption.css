@@ -1,0 +1,22 @@
+.SidebarOption {
+	/*border: 0.25px solid grey;*/
+	font-size: 20px;
+	background: #678FFE;
+	color: black;
+	cursor: pointer;
+	/*font-family: "Courier New", Courier, monospace;*/
+}
+.SidebarOption-p {
+	margin: 0;
+}
+.SidebarOption:hover{
+	background: lightblue;
+}
+
+#upload-btn {
+	display: none;
+}
+
+#upload-input {
+	display: none;
+}
