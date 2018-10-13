@@ -7,7 +7,7 @@ dbUtil.connect();
 var output;
 
 router.get('/', function(req, res, next) {
-	console.log(req);
+	//console.log(req);
 	search_q = mk_query(req);
 	param_list = mk_list(req);
 	dbUtil.query(search_q, param_list, (err, result) => {
@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/all', function(req, res, next) {
-	console.log(req)
+	//console.log(req)
 	search_q = 'Select * From data';
 	param_list = [];
 	dbUtil.query(search_q, param_list, (err, result) => {
@@ -40,7 +40,7 @@ router.get('/all', function(req, res, next) {
 function out (res){
 	res.header('Access-Control-Allow-Origin', "*");
 	res.status(200).send(output);
-	console.log(output);
+	//console.log(output);
 }
 
 
