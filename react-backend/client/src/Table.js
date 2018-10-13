@@ -6,7 +6,7 @@ import TableRow from './TableRow';
 import { Table as T} from 'react-bootstrap';
 
 var table_headings = {
-      "data" : "Number",
+      "number" : "Number",
       "course_name" : "Course",
       "town_city_area" : "City",
       "state" : "State",
@@ -16,7 +16,8 @@ var table_headings = {
       "type" : "Type",
       "founded_date" : "Founded Date",
       "architect_designer" : "Designer",
-      "value" : "Value"
+      "value" : "Value",
+      "notes" : "Notes"
     };
 
 class Table extends Component {
