@@ -41,7 +41,7 @@ class SidebarOption extends Component {
 
   handleDownloadClick() {
     axios({
-      url: 'http://localhost:3000/download',
+      url: 'https://blooming-plains-66664.herokuapp.com/download',
       method: 'GET',
       responseType: 'blob', // important
     }).then((response) => {
@@ -62,7 +62,7 @@ class SidebarOption extends Component {
         var formData = new FormData();
         formData.append('uploads[]', file, file.name);
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:5000/upload', true);
+        xhr.open('POST', 'https://blooming-plains-66664.herokuapp.com/upload', true);
         xhr.send(formData);
       }
   }

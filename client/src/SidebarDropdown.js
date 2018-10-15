@@ -14,13 +14,48 @@ class SidebarDropdown extends Component {
     var Data = {};
     var newData;
     var inputForm = document.getElementById("form");
+    //console.log("inputForm " + inputForm);
+    var emptyString = true;
     for (var i = 0; i < inputForm.length - 1; i++){
+      if (inputForm.elements[i].value != '') {
+        emptyString = false;
+      }
       Data[inputForm.elements[i].name] = "%"+inputForm.elements[i].value+"%";
     }
     //console.log(Data);
-    var p1 = new Promise((resolve, reject) => {
+    if (emptyString) {
+      console.log("empty String");
+      var p1 = new Promise((resolve, reject) => {
       request({
-      url: 'http://localhost:3000/search_db',
+      url: 'https://blooming-plains-66664.herokuapp.com/search_db/all',
+      method: "GET",
+      }, (error, res, body) => {
+        newData = JSON.parse(body)["rows"];
+        // console.log(newData);
+        if (newData.length == 0){
+          
+          newData = [{
+          "data": "",
+          "course_name": "",
+          "town_city_area": "",
+          "state": "",
+          "country": "",
+          "world_area": "",
+          "holes": "",
+          "founded_date": "",
+          "type": "",
+          "architect_designer": "",
+          "value": ""}]
+        }
+        resolve();
+      });
+    }).then(()=>{
+        this.props.onDataChange(newData);
+    });
+  } else {
+    var p2 = new Promise((resolve, reject) => {
+      request({
+      url: 'http://localhost:5000/search_db',
       method: "GET",
       qs: Data,
       }, (error, res, body) => {
@@ -46,13 +81,14 @@ class SidebarDropdown extends Component {
     }).then(()=>{
       this.props.onDataChange(newData);
     });
-
+  }
+    
     e.preventDefault();
   }
 
   render() {
-  	return (
-  		<div className="SidebarDropdown">
+    return (
+      <div className="SidebarDropdown">
         <form className="Dropdown-form" onSubmit={this.handleSubmit} id="form">
           <div className="label">
             <div>
