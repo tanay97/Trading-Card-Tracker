@@ -30,11 +30,11 @@ class App extends Component {
   }
 
   handleInitialData() {
-      console.log("handle intial data entry");
+      console.log("new handle intial data entry");
       var newData;
       var p1 = new Promise((resolve, reject) => {
       request({
-      url: 'http://localhost:3000/search_db/all',
+      url: 'http://localhost:5000/search_db/all',
       method: "GET",
       }, (error, res, body) => {
         newData = JSON.parse(body)["rows"];
