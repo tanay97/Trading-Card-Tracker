@@ -55,7 +55,7 @@ class SidebarDropdown extends Component {
   } else {
     var p2 = new Promise((resolve, reject) => {
       request({
-      url: 'http://localhost:5000/search_db',
+      url: 'https://blooming-plains-66664.herokuapp.com/search_db',
       method: "GET",
       qs: Data,
       }, (error, res, body) => {
