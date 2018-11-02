@@ -34,7 +34,7 @@ class App extends Component {
       var newData;
       var p1 = new Promise((resolve, reject) => {
       request({
-      url: 'http://localhost:3000/search_db/all',
+      url: 'https://blooming-plains-66664.herokuapp.com/search_db/all',
       method: "GET",
       }, (error, res, body) => {
         newData = JSON.parse(body)["rows"];
