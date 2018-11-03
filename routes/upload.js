@@ -80,6 +80,7 @@ router.post('/', upload.any(), function(req, res, next) {
             // COMMIT has been executed
             console.log('Total batches:', d.total, ', Duration:', d.duration);
             res.header('Access-Control-Allow-Origin', "*");
+            
             res.status(201).send("uploaded into db successfully");
         }).catch(error => {
             // ROLLBACK has been executed
