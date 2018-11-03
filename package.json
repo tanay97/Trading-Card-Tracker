@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    //"start": "npm install && cd client && npm start"
-    "start": "node ./bin/www"
+    "start": "cd client && npm start"
   },
   "dependencies": {
     "cookie-parser": "^1.4.3",
