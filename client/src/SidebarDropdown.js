@@ -99,7 +99,7 @@ class SidebarDropdown extends Component {
           <div className="label">
             <div>
               Holes
-              <input type="text" name="holes" className="input"/>
+              <input type="text" name="holes" className="input" value="18"/>
             </div><br/>
           </div>
           <div className="label">
