@@ -44,7 +44,6 @@ function out (res){
 }
 
 
-
 function mk_query(req){
 	var q = 'Select * From data where ';
 	var count = 1; 
@@ -64,7 +63,7 @@ function mk_list (req){
 	var l = [];
 	for (key in req.query){
 		if (req.query[key] != ""){
-			l.push(req.query[key]);
+			l.push(req.query[key].toLowerCase());
 		}
 	}
 	console.log(l)
