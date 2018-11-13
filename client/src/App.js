@@ -9,6 +9,7 @@ import Table from './Table';
 import DisplayMessage from './DisplayMessage';
 import { ButtonGroup } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import ReactLoading from 'react-loading';
 
 var request = require("request");
 
@@ -26,7 +27,17 @@ class App extends Component {
     this.handleChangePage=this.handleChangePage.bind(this);
     this.handleNewData = this.handleNewData.bind(this);
     this.handleInitialData = this.handleInitialData.bind(this);
+    this.handleNewSearch = this.handleNewSearch.bind(this);
     this.handleInitialData();
+  }
+
+  handleNewSearch() {
+    console.log("new search handler in app.js");
+    this.setState({pageNumber: 1,  // should never change
+      buttonPageIndex: 0,  // should never change
+      pageSize: 9,   // todo: make button saying what pageSize is
+      numberButtons: 2,  // todo: change based on screen size
+      data: null});
   }
 
   handleInitialData() {
@@ -116,7 +127,9 @@ class App extends Component {
 
   // in Math.ceil -> passing total number of buttons needed 
   render() {
+    console.log("rerendered");
       if (this.state.data == null) {
+          console.log("shit isnull");
           return (
               <div className="App">
                 <div className="title">
@@ -130,9 +143,13 @@ class App extends Component {
                   <SidebarOption text={"Upload"} type={3} onDataChange={this.handleNewData}/>
                   <SidebarOption text={"Download"} type={4} onDataChange={this.handleNewData}/>
                 </div>
+                <div className = "spinnerDiv">
+                  <ReactLoading type={"spinningBubbles"} color="#678FFE" height={"100px"} width={"100px"} className={"spinner"}/>
+                </div>
               </div>
+              
             );
-      } else {
+     } else {
     return (
       <div className="App">
         <div className="title">
@@ -142,8 +159,8 @@ class App extends Component {
           <div className="golf">
             Golf
           </div>
-          <SidebarOption text={"Find"} type={1} onDataChange={this.handleNewData}/>
-          <SidebarOption text={"Upload"} type={3} onDataChange={this.handleNewData}/>
+          <SidebarOption text={"Find"} type={1} onDataChange={this.handleNewData} onNewSearch={this.handleNewSearch}/>
+          <SidebarOption text={"Upload"} type={3} onDataChange={this.handleNewData} onNewSearch={this.handleNewSearch}/>
           <SidebarOption text={"Download"} type={4} onDataChange={this.handleNewData}/>
         </div>
         <div className="Table">

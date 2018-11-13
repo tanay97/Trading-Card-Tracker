@@ -28,9 +28,10 @@ class Table extends Component {
   }
 
   render() {
-    if(this.props.data == undefined || this.props.data.length < 1) {
-      // should show screen that no results were found
+    if(this.props.data == null) {
+      console.log("here");
     } else {
+      console.log("here2");
     	return (
         <T striped bordered condensed hover className="T-class">
           <thead className="TableHead">
