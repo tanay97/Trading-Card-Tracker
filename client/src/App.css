@@ -15,7 +15,6 @@ html{
     /*background-color: #94D466;*/
     /*border-color: blue;*/
     font-family: "Avenir", Helvetica, Arial, sans-serif;
-
 }
 
 .sidenav {
@@ -80,6 +79,20 @@ html{
     /*left: 15%;*/
     width: 100%;
 }
+
+.spinnerDiv {
+    position: relative;
+    left: 15%;
+    height: 100%;
+    width: 85%;
+}
+
+.spinner {
+    position: relative;
+    top:25%;
+    left:47%;
+}
+
 
 /* The navigation menu links 
 

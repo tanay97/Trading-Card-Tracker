@@ -23,6 +23,9 @@ class SidebarOption extends Component {
     this.handleFileUploadChange = this.handleFileUploadChange.bind(this);
     this.handleDownloadClick = this.handleDownloadClick.bind(this);
   }
+
+
+
   handleClick(e) {
     //console.log('urmomgay');
     this.setState(state => ({clicked: !state.clicked}));
@@ -31,11 +34,13 @@ class SidebarOption extends Component {
   }
 
   handleDataChange(newData){
+    //this.props.onNewSearch();
     this.props.onDataChange(newData);
     //console.log(newData);
   }
 
   handleUploadClick() {
+    //this.props.onNewSearch();  // to clear data for now hopefully
     this.uploadInputRef.current.click();
   }
 
@@ -56,6 +61,7 @@ class SidebarOption extends Component {
   }
 
   handleFileUploadChange() {
+    this.props.onNewSearch();
       var files = this.uploadInputRef.current.files;
       if (files.length > 0) {
         var file = files[0];
@@ -76,7 +82,7 @@ class SidebarOption extends Component {
                 {this.props.text}
             </p>
         </div>
-        <SidebarDropdown text={"Menu"} onDataChange={this.handleDataChange}/>
+        <SidebarDropdown text={"Menu"} onDataChange={this.handleDataChange} onNewSearch={this.props.onNewSearch}/>
       </div>
       );
     } else if (this.props.type == upload) {

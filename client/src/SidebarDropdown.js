@@ -11,6 +11,8 @@ class SidebarDropdown extends Component {
     this.handleSubmit =this.handleSubmit.bind(this);
   }
   handleSubmit(e){
+    console.log("hanlde submit");
+    this.props.onNewSearch();
     var Data = {};
     var newData;
     var inputForm = document.getElementById("form");
